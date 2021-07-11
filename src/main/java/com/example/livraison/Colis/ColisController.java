@@ -3,14 +3,20 @@ package com.example.livraison.Colis;
 import java.time.LocalDate;
 
 
+
+
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.livraison.Colis.Colis;
 
 
- 
+@Controller
 @RestController
 @CrossOrigin("*")
 @RequestMapping //(path ="api/v1/colis" )
@@ -58,37 +64,36 @@ public class ColisController {
     
    
     @PutMapping("updateColis")
-	//@RequestMapping(value="updateColis", method = {RequestMethod.PUT})
     public Colis updateColis( @RequestBody  Colis colis )
    {  
 	   return colisService.updateColis(colis);
    }
    
+    
+    
    //delete
     @DeleteMapping("deleteColis")
-    public String deleteColis(@RequestParam Long Réference)
+    public String deleteColis(@RequestParam Long reference)
      {
-    	colisService.deleteColis(Réference);
+    	colisService.deleteColis(reference);
     	return "Colis Deletetd !" ;
      }
-   
-   
-   
-   
-
-	/** 
-	
-  //find all
-    @GetMapping(value="getColisCreé")
-    public List<Colis> findByEtat()
-    {
- 	  return colisService.findByEtat("Creé") ;
- 	  
-    }
+ 
     
-	*/
-	
+ 
+   
+    //findColisCreé
+    @GetMapping("/search/{etat}")
+	  
+	  @ResponseBody 
+	  public  List<Colis> search(@PathVariable(value = "etat") String etat) {
+		  List<Colis> list =  colisService.search(etat); 
+		  return list; 
+	 }
+    
+    
 }
+
 	
 	
 	

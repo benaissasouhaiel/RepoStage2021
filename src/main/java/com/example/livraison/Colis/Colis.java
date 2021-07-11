@@ -1,6 +1,7 @@
 package com.example.livraison.Colis;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,32 +24,30 @@ public class Colis {
 	
 @GeneratedValue (strategy = GenerationType.SEQUENCE , 
                	generator = "colis_Sequence")
-	public Long   Réference ; 
+	public Long   reference ; 
 	
 	
-	public String Nom_C ;
-	public String Prenom_C ;
-	public int Tel_C ; 
-	//public String Date_de_création ;
-	public String Adresse ; 
-	public String Gouvernera ; 
-	public String Délégation ;
-	public String Localité;
-	public int Code_postale ; 
-	public int COD ; 
-	public String Mode_Paiement; 
-	public String Service  ;
-	public String Designation  ;
-	public String Remarque ; 
-	public String Etat ;
-	public String Anomalie ;
-	public int Nb_P ;
-	public int Longeur ;
-	public int Largeur ;
-	public int Hauteur ;
-	public int Poids ;
-	
-	
+	public String nom_c ;
+	public String prenom_c ;
+	public int tel_c ; 
+	private LocalDateTime dateCreation = LocalDateTime.now();
+	public String adresse ; 
+	public String gouvernera ; 
+	public String delegation ;
+	public String localité;
+	public int code_postale ; 
+	public int cod ; 
+	public String mode_paiement; 
+	public String service  ;
+	public String designation  ;
+	public String remarque ; 
+	public String etat ;
+	public String anomalie ;
+	public int nb_p ;
+	public int longeur ;
+	public int largeur ;
+	public int hauteur ;
+	public int poids ;
 	
 	
 	
@@ -59,39 +58,45 @@ public class Colis {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
 
 
 
 
 
 
-	public Colis(Long réference, String nom_C, String prenom_C, int tel_C, String adresse,
-			String gouvernera, String délégation, String localité, int code_postale, int cOD, String mode_Paiement,
-			String service, String designation, String remarque, String etat, String anomalie, int nb_P, int longeur,
+
+
+
+	public Colis(Long reference, String nom_c, String prenom_c, int tel_c, LocalDateTime dateCreation, String adresse,
+			String gouvernera, String delegation, String localité, int code_postale, int cod, String mode_paiement,
+			String service, String designation, String remarque, String etat, String anomalie, int nb_p, int longeur,
 			int largeur, int hauteur, int poids) {
 		super();
-		Réference = réference;
-		Nom_C = nom_C;
-		Prenom_C = prenom_C;
-		Tel_C = tel_C;
-		//Date_de_création = date_de_création;
-		Adresse = adresse;
-		Gouvernera = gouvernera;
-		Délégation = délégation;
-		Localité = localité;
-		Code_postale = code_postale;
-		COD = cOD;
-		Mode_Paiement = mode_Paiement;
-		Service = service;
-		Designation = designation;
-		Remarque = remarque;
-		Etat = etat;
-		Anomalie = anomalie;
-		Nb_P = nb_P;
-		Longeur = longeur;
-		Largeur = largeur;
-		Hauteur = hauteur;
-		Poids = poids;
+		reference = reference;
+		this.nom_c = nom_c;
+		this.prenom_c = prenom_c;
+		this.tel_c = tel_c;
+		this.dateCreation = dateCreation;
+		this.adresse = adresse;
+		this.gouvernera = gouvernera;
+		this.delegation = delegation;
+		this.localité = localité;
+		this.code_postale = code_postale;
+		this.cod = cod;
+		this.mode_paiement = mode_paiement;
+		this.service = service;
+		this.designation = designation;
+		this.remarque = remarque;
+		this.etat = etat;
+		this.anomalie = anomalie;
+		this.nb_p = nb_p;
+		this.longeur = longeur;
+		this.largeur = largeur;
+		this.hauteur = hauteur;
+		this.poids = poids;
 	}
 
 
@@ -99,138 +104,573 @@ public class Colis {
 
 
 
-	public String getNom_C() {
-		return Nom_C;
-	}
-	public void setNom_C(String nom_C) {
-		Nom_C = nom_C;
-	}
-	public String getPrenom_C() {
-		return Prenom_C;
-	}
-	public void setPrenom_C(String prenom_C) {
-		Prenom_C = prenom_C;
-	}
-	public int getTel_C() {
-		return Tel_C;
-	}
-	public void setTel_C(int tel_C) {
-		Tel_C = tel_C;
-	}
-	
-	//public String getDate_de_création() {
-		//return Date_de_création;
-	//}
 
 
 
-	//public void setDate_de_création(String date_de_création) {
-		//Date_de_création = date_de_création;
-	//}
+
+
+
+	public String getNom_c() {
+		return nom_c;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setNom_c(String nom_c) {
+		this.nom_c = nom_c;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getPrenom_c() {
+		return prenom_c;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setPrenom_c(String prenom_c) {
+		this.prenom_c = prenom_c;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public int getTel_c() {
+		return tel_c;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setTel_c(int tel_c) {
+		this.tel_c = tel_c;
+	}
+
+
+
+
+
+
+
+
+
 
 
 
 	public String getAdresse() {
-		return Adresse;
+		return adresse;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setAdresse(String adresse) {
-		Adresse = adresse;
+		this.adresse = adresse;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getGouvernera() {
-		return Gouvernera;
+		return gouvernera;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setGouvernera(String gouvernera) {
-		Gouvernera = gouvernera;
+		this.gouvernera = gouvernera;
 	}
-	public String getDélégation() {
-		return Délégation;
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getDelegation() {
+		return delegation;
 	}
-	public void setDélégation(String délégation) {
-		Délégation = délégation;
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setDelegation(String delegation) {
+		this.delegation = delegation;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getLocalité() {
-		return Localité;
+		return localité;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setLocalité(String localité) {
-		Localité = localité;
+		this.localité = localité;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public int getCode_postale() {
-		return Code_postale;
+		return code_postale;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setCode_postale(int code_postale) {
-		Code_postale = code_postale;
+		this.code_postale = code_postale;
 	}
-	public int getCOD() {
-		return COD;
+
+
+
+
+
+
+
+
+
+
+
+
+	public int getCod() {
+		return cod;
 	}
-	public void setCOD(int cOD) {
-		COD = cOD;
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
-	public String getMode_Paiement() {
-		return Mode_Paiement;
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getMode_paiement() {
+		return mode_paiement;
 	}
-	public void setMode_Paiement(String mode_Paiement) {
-		Mode_Paiement = mode_Paiement;
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setMode_paiement(String mode_paiement) {
+		this.mode_paiement = mode_paiement;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getService() {
-		return Service;
+		return service;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setService(String service) {
-		Service = service;
+		this.service = service;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getDesignation() {
-		return Designation;
+		return designation;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setDesignation(String designation) {
-		Designation = designation;
+		this.designation = designation;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getRemarque() {
-		return Remarque;
+		return remarque;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setRemarque(String remarque) {
-		Remarque = remarque;
+		this.remarque = remarque;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getEtat() {
-		return Etat;
+		return etat;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setEtat(String etat) {
-		Etat = etat;
+		this.etat = etat;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public String getAnomalie() {
-		return Anomalie;
+		return anomalie;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setAnomalie(String anomalie) {
-		Anomalie = anomalie;
+		this.anomalie = anomalie;
 	}
-	public int getNb_P() {
-		return Nb_P;
+
+
+
+
+
+
+
+
+
+
+
+
+	public int getNb_p() {
+		return nb_p;
 	}
-	public void setNb_P(int nb_P) {
-		Nb_P = nb_P;
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setNb_p(int nb_p) {
+		this.nb_p = nb_p;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public int getLongeur() {
-		return Longeur;
+		return longeur;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public void setLongeur(int longeur) {
-		Longeur = longeur;
+		this.longeur = longeur;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public int getLargeur() {
-		return Largeur;
+		return largeur;
 	}
+
+
+
+
 	public void setLargeur(int largeur) {
-		Largeur = largeur;
+		this.largeur = largeur;
 	}
+
+
+
+
+
+
+
+
 	public int getHauteur() {
-		return Hauteur;
+		return hauteur;
 	}
+
+
+
+
+
+
+
 	public void setHauteur(int hauteur) {
-		Hauteur = hauteur;
+		this.hauteur = hauteur;
 	}
+
+
+
+
+
+
+
 	public int getPoids() {
-		return Poids;
+		return poids;
 	}
+
+
+
+
+
+
+
+
 	public void setPoids(int poids) {
-		Poids = poids;
+		this.poids = poids;
 	}
 
 
@@ -240,27 +680,18 @@ public class Colis {
 
 	@Override
 	public String toString() {
-		return "Colis [Réference=" + Réference + ", Nom_C=" + Nom_C + ", Prenom_C=" + Prenom_C + ", Tel_C=" + Tel_C
-				+ ", Adresse=" + Adresse + ", Gouvernera=" + Gouvernera + ", Délégation=" + Délégation + ", Localité="
-				+ Localité + ", Code_postale=" + Code_postale + ", COD=" + COD + ", Mode_Paiement=" + Mode_Paiement
-				+ ", Service=" + Service + ", Designation=" + Designation + ", Remarque=" + Remarque + ", Etat=" + Etat
-				+ ", Anomalie=" + Anomalie + ", Nb_P=" + Nb_P + ", Longeur=" + Longeur + ", Largeur=" + Largeur
-				+ ", Hauteur=" + Hauteur + ", Poids=" + Poids + "]";
+		return "Colis [reference=" + reference + ", nom_c=" + nom_c + ", prenom_c=" + prenom_c + ", tel_c=" + tel_c
+				+ ", dateCreation=" + dateCreation + ", adresse=" + adresse + ", gouvernera=" + gouvernera
+				+ ", delegation=" + delegation + ", localité=" + localité + ", code_postale=" + code_postale + ", cod="
+				+ cod + ", mode_paiement=" + mode_paiement + ", service=" + service + ", designation=" + designation
+				+ ", remarque=" + remarque + ", etat=" + etat + ", anomalie=" + anomalie + ", nb_p=" + nb_p
+				+ ", longeur=" + longeur + ", largeur=" + largeur + ", hauteur=" + hauteur + ", poids=" + poids + "]";
 	}
 
 
 
 
 
-
-	
-
-
-
-
-
-	
-	
 }
 	
 
