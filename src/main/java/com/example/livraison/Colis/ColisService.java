@@ -1,16 +1,9 @@
 package com.example.livraison.Colis;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import com.example.livraison.Colis.Colis;
-import com.example.livraison.Colis.ColisRepository;
-
 
 @Service
 public class ColisService {
@@ -64,5 +57,12 @@ public class ColisService {
 		List<Colis> list =  (List<Colis>) colisRepository.search(etat); 
 		return list;
      }
-
+	
+	public int countByEtat(String etat)
+	{
+	return colisRepository.countByEtat(etat);
+	
+	}		
+	
+	
 }
