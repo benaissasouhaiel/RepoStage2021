@@ -79,6 +79,13 @@ public class ColisController {
     	colisService.deleteColis(reference);
     	return "Colis Deletetd !" ;
      }
+    
+    @RequestMapping("/createBarCode/{reference}")
+    public String generateColisBarCode(@PathVariable(value = "reference") Long reference)
+     {
+    	String text = colisService.generateColisBarCode(reference);
+    	return text ;
+     }
  
     
  

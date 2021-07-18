@@ -1,5 +1,6 @@
 package com.example.livraison.Colis;
 
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.livraison.Colis.Colis;
 import com.example.livraison.Colis.ColisRepository;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.Code128Writer;
 
 
 @Service
@@ -64,5 +69,33 @@ public class ColisService {
 		List<Colis> list =  (List<Colis>) colisRepository.search(etat); 
 		return list;
      }
+	
+	//findColis by id 
+		public Optional<Colis> findById(Long referene)
+		
+		{
+				return colisRepository.findById(referene);
+		}
+		
+		
+		public String generateColisBarCode (Long reference)
+		{
+			Colis colisBarCode = findById(reference).orElse(new Colis());
+			String text = colisBarCode.toColisBarCode(); 
+			String path = "C:\\Users\\Imen\\Desktop\\my stuff\\Cours\\2020-2021\\Stage Ah-Co\\stage2021\\src\\main\\java\\img\\colis"
+					+ text+".jpg";
+			try {
+					Code128Writer writer = new Code128Writer(); 
+					BitMatrix matrix = writer.encode(text, BarcodeFormat.CODE_128, 400, 90);
+					MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(path));
+					System.out.println ("Barcode created");
+			} catch (Exception e ) 
+					{
+						System.out.println ("Error while creating barcode");
+					}
+					
+			return text;
+		}
+		
 
 }

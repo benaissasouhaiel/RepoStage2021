@@ -103,6 +103,17 @@ public class Colis {
 				+ anomalie + ", nb_p=" + nb_p + ", longeur=" + longeur + ", largeur=" + largeur + ", hauteur=" + hauteur
 				+ ", poids=" + poids + "]";
 	}
+	
+	public String toColisBarCode ()
+	{
+		int serviceCode ; 
+		if (this.service=="Livraison")
+		{serviceCode = 1;}
+		else 
+			serviceCode =2 ;
+		return "010"+ serviceCode + this.fournisseur.getId() +this.reference ;
+		
+	}
 
 
 	public Long getReference() {
