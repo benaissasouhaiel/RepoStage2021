@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ColisConfig {
 	
-	
+
 	@Bean
 	CommandLineRunner commandLineRunner (ColisRepository repository)
 	{

@@ -2,40 +2,41 @@ package com.example.livraison.Colis;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.example.livraison.Fournisseur.Fournisseur;
 
 @Entity
 @Table
 public class Colis {
 	
-	
-	@Id
+@Id
 @SequenceGenerator(
 		name = "colis_sequence",
 		sequenceName = "colis_sequence",
         allocationSize = 1 )
-	
+
 @GeneratedValue (strategy = GenerationType.SEQUENCE , 
                	generator = "colis_Sequence")
+
 	public Long   reference ; 
-	
-	
 	public String nom_c ;
 	public String prenom_c ;
-	public int tel_c ; 
-	private LocalDateTime dateCreation = LocalDateTime.now();
+	public int tel_c_1 ;
+	public int tel_c_2 ;
+	private LocalDateTime date_creation = LocalDateTime.now();
 	public String adresse ; 
-	public String gouvernera ; 
+	public String gouvernorat ; 
 	public String delegation ;
-	public String localité;
-	public int code_postale ; 
+	public String localite;
+	public int code_postal ; 
 	public int cod ; 
 	public String mode_paiement; 
 	public String service  ;
@@ -49,42 +50,32 @@ public class Colis {
 	public int hauteur ;
 	public int poids ;
 	
-	
-	
-
+	@ManyToOne
+    public Fournisseur fournisseur ;
 
 
 	public Colis() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
 
 
-
-
-
-
-
-
-
-	public Colis(Long reference, String nom_c, String prenom_c, int tel_c, LocalDateTime dateCreation, String adresse,
-			String gouvernera, String delegation, String localité, int code_postale, int cod, String mode_paiement,
-			String service, String designation, String remarque, String etat, String anomalie, int nb_p, int longeur,
-			int largeur, int hauteur, int poids) {
+	public Colis(Long reference, String nom_c, String prenom_c, int tel_c_1, int tel_c_2, LocalDateTime date_creation,
+			String adresse, String gouvernorat, String delegation, String localite, int code_postal, int cod,
+			String mode_paiement, String service, String designation, String remarque, String etat, String anomalie,
+			int nb_p, int longeur, int largeur, int hauteur, int poids) {
 		super();
-		reference = reference;
+		this.reference = reference;
 		this.nom_c = nom_c;
 		this.prenom_c = prenom_c;
-		this.tel_c = tel_c;
-		this.dateCreation = dateCreation;
+		this.tel_c_1 = tel_c_1;
+		this.tel_c_2 = tel_c_2;
+		this.date_creation = date_creation;
 		this.adresse = adresse;
-		this.gouvernera = gouvernera;
+		this.gouvernorat = gouvernorat;
 		this.delegation = delegation;
-		this.localité = localité;
-		this.code_postale = code_postale;
+		this.localite = localite;
+		this.code_postal = code_postal;
 		this.cod = cod;
 		this.mode_paiement = mode_paiement;
 		this.service = service;
@@ -96,18 +87,32 @@ public class Colis {
 		this.longeur = longeur;
 		this.largeur = largeur;
 		this.hauteur = hauteur;
-		this.poids = poids;
+		this.poids = poids ;
+		
+	}
+	
+	 
+
+	@Override
+	public String toString() {
+		return "Colis [reference=" + reference + ", nom_c=" + nom_c + ", prenom_c=" + prenom_c + ", tel_c_1=" + tel_c_1
+				+ ", tel_c_2=" + tel_c_2 + ", date_creation=" + date_creation + ", adresse=" + adresse
+				+ ", gouvernorat=" + gouvernorat + ", delegation=" + delegation + ", localite=" + localite
+				+ ", code_postal=" + code_postal + ", cod=" + cod + ", mode_paiement=" + mode_paiement + ", service="
+				+ service + ", designation=" + designation + ", remarque=" + remarque + ", etat=" + etat + ", anomalie="
+				+ anomalie + ", nb_p=" + nb_p + ", longeur=" + longeur + ", largeur=" + largeur + ", hauteur=" + hauteur
+				+ ", poids=" + poids + "]";
 	}
 
 
+	public Long getReference() {
+		return reference;
+	}
 
 
-
-
-
-
-
-
+	public void setReference(Long reference) {
+		this.reference = reference;
+	}
 
 
 	public String getNom_c() {
@@ -115,29 +120,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setNom_c(String nom_c) {
 		this.nom_c = nom_c;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getPrenom_c() {
@@ -145,59 +130,39 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setPrenom_c(String prenom_c) {
 		this.prenom_c = prenom_c;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public int getTel_c() {
-		return tel_c;
+	public int getTel_c_1() {
+		return tel_c_1;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public void setTel_c(int tel_c) {
-		this.tel_c = tel_c;
+	public void setTel_c_1(int tel_c_1) {
+		this.tel_c_1 = tel_c_1;
 	}
 
 
+	public int getTel_c_2() {
+		return tel_c_2;
+	}
 
 
+	public void setTel_c_2(int tel_c_2) {
+		this.tel_c_2 = tel_c_2;
+	}
 
 
+	public LocalDateTime getDate_creation() {
+		return date_creation;
+	}
 
 
-
-
+	public void setDate_creation(LocalDateTime date_creation) {
+		this.date_creation = date_creation;
+	}
 
 
 	public String getAdresse() {
@@ -205,59 +170,19 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public String getGouvernera() {
-		return gouvernera;
+	public String getGouvernorat() {
+		return gouvernorat;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public void setGouvernera(String gouvernera) {
-		this.gouvernera = gouvernera;
+	public void setGouvernorat(String gouvernorat) {
+		this.gouvernorat = gouvernorat;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getDelegation() {
@@ -265,89 +190,29 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setDelegation(String delegation) {
 		this.delegation = delegation;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public String getLocalité() {
-		return localité;
+	public String getLocalite() {
+		return localite;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public void setLocalité(String localité) {
-		this.localité = localité;
+	public void setLocalite(String localite) {
+		this.localite = localite;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public int getCode_postale() {
-		return code_postale;
+	public int getCode_postal() {
+		return code_postal;
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-	public void setCode_postale(int code_postale) {
-		this.code_postale = code_postale;
+	public void setCode_postal(int code_postal) {
+		this.code_postal = code_postal;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public int getCod() {
@@ -355,29 +220,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setCod(int cod) {
 		this.cod = cod;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getMode_paiement() {
@@ -385,29 +230,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setMode_paiement(String mode_paiement) {
 		this.mode_paiement = mode_paiement;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getService() {
@@ -415,29 +240,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setService(String service) {
 		this.service = service;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getDesignation() {
@@ -445,29 +250,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getRemarque() {
@@ -475,29 +260,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setRemarque(String remarque) {
 		this.remarque = remarque;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getEtat() {
@@ -505,29 +270,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public String getAnomalie() {
@@ -535,29 +280,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setAnomalie(String anomalie) {
 		this.anomalie = anomalie;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public int getNb_p() {
@@ -565,29 +290,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setNb_p(int nb_p) {
 		this.nb_p = nb_p;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public int getLongeur() {
@@ -595,29 +300,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	public void setLongeur(int longeur) {
 		this.longeur = longeur;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 	public int getLargeur() {
@@ -625,17 +310,9 @@ public class Colis {
 	}
 
 
-
-
 	public void setLargeur(int largeur) {
 		this.largeur = largeur;
 	}
-
-
-
-
-
-
 
 
 	public int getHauteur() {
@@ -643,19 +320,9 @@ public class Colis {
 	}
 
 
-
-
-
-
-
 	public void setHauteur(int hauteur) {
 		this.hauteur = hauteur;
 	}
-
-
-
-
-
 
 
 	public int getPoids() {
@@ -663,40 +330,16 @@ public class Colis {
 	}
 
 
-
-
-
-
-
-
 	public void setPoids(int poids) {
 		this.poids = poids;
 	}
-
-
-
-
-
-
-	@Override
-	public String toString() {
-		return "Colis [reference=" + reference + ", nom_c=" + nom_c + ", prenom_c=" + prenom_c + ", tel_c=" + tel_c
-				+ ", dateCreation=" + dateCreation + ", adresse=" + adresse + ", gouvernera=" + gouvernera
-				+ ", delegation=" + delegation + ", localité=" + localité + ", code_postale=" + code_postale + ", cod="
-				+ cod + ", mode_paiement=" + mode_paiement + ", service=" + service + ", designation=" + designation
-				+ ", remarque=" + remarque + ", etat=" + etat + ", anomalie=" + anomalie + ", nb_p=" + nb_p
-				+ ", longeur=" + longeur + ", largeur=" + largeur + ", hauteur=" + hauteur + ", poids=" + poids + "]";
+	public Fournisseur getFournisseur() {
+		return fournisseur;
 	}
 
 
-
-
-
+	public void setFournisseur(Fournisseur fournisseur) {
+		this.fournisseur = fournisseur;
+	}
+	
 }
-	
-
-
-	
-
-
-	

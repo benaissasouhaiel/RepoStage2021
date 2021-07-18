@@ -55,7 +55,7 @@ public class ColisController {
    
    
    //find all
-   @GetMapping(value="getAllColis")
+   @GetMapping(value="/getAllColis")
    public List<Colis> findAllColis()
    {
 	  return colisService.findAllColis() ;
@@ -65,15 +65,16 @@ public class ColisController {
    
     @PutMapping("updateColis")
     public Colis updateColis( @RequestBody  Colis colis )
+
    {  
 	   return colisService.updateColis(colis);
    }
    
     
-    
+
    //delete
-    @DeleteMapping("deleteColis")
-    public String deleteColis(@RequestParam Long reference)
+    @DeleteMapping("/deleteColis/{reference}")
+    public String deleteColis(@PathVariable(value = "reference") Long reference)
      {
     	colisService.deleteColis(reference);
     	return "Colis Deletetd !" ;
