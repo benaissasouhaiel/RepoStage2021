@@ -17,12 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.livraison.Colis.Colis;
-import com.example.livraison.Colis.ColisService;
-
-
-
-
 @Controller
 @RestController
 @CrossOrigin("*")
