@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.livraison.Colis.Colis;
 import com.example.livraison.Colis.ColisRepository;
+import com.example.livraison.Colis.ColisRepository.HistoStateOnly;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
@@ -53,8 +54,15 @@ public class ColisService {
 		return colisRepository.findAll();	
 	}
 	
+	// liste des audits 
+	
+	public List<HistoStateOnly> getColisAud(Long reference)
+	{
+		 	
+		return colisRepository.getColisAud(reference);
 	
 	
+	}
 	//supprimer un colis 
 	public void deleteColis(Long reference)
 	{

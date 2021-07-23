@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.livraison.Colis.Colis;
+import com.example.livraison.Colis.ColisRepository.HistoStateOnly;
 
 
 @Controller
@@ -88,7 +89,14 @@ public class ColisController {
      }
  
     
- 
+  //findColisCreé
+    @GetMapping("/getColisAudit/{reference}")
+	  
+	  @ResponseBody 
+	  public  List<HistoStateOnly> getColisAud(@PathVariable(value = "reference") Long reference) {
+		  return  colisService.getColisAud(reference); 
+		   
+	 }
    
     //findColisCreé
     @GetMapping("/search/{etat}")

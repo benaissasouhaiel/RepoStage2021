@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import com.example.livraison.Fournisseur.Fournisseur;
 
 @Entity
@@ -42,6 +44,7 @@ public class Colis {
 	public String service  ;
 	public String designation  ;
 	public String remarque ; 
+	@Audited
 	public String etat ;
 	public String anomalie ;
 	public int nb_p ;
